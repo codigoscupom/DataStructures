@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.neilson.lists.DLListTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2014-12-22T00:35:15" hostname="neilson.local" time="0.011">
+<testsuite name="com.neilson.lists.DLListTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2014-12-24T12:05:05" hostname="neilson.local" time="0.014">
   <properties/>
-  <testcase name="comeAndGo" classname="com.neilson.lists.DLListTest" time="0.006"/>
+  <testcase name="comeAndGo" classname="com.neilson.lists.DLListTest" time="0.01"/>
   <testcase name="testCount" classname="com.neilson.lists.DLListTest" time="0.0"/>
   <testcase name="insertHead" classname="com.neilson.lists.DLListTest" time="0.0"/>
   <testcase name="insertTail" classname="com.neilson.lists.DLListTest" time="0.0"/>
+  <testcase name="deleteFromHead" classname="com.neilson.lists.DLListTest" time="0.0"/>
+  <testcase name="deleteFromTail" classname="com.neilson.lists.DLListTest" time="0.0"/>
+  <testcase name="deleteFromPosition" classname="com.neilson.lists.DLListTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

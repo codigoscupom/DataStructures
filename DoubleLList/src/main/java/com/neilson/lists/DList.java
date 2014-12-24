@@ -29,7 +29,7 @@ public class DList {
         head = node;
     }
 
-    public int [] comeAndGo() {
+    public int[] comeAndGo() {
         int[] completeTurn = new int[2 * countElements() - 1];
         int index = 0;
         if (head != null) {
@@ -83,5 +83,56 @@ public class DList {
             index++;
         }
         return array;
+    }
+
+    public void deleteFromHead() {
+        if (head == null) return;
+        Node temp = head.right;
+        temp.left = null;
+        head.right = null;
+        head = temp;
+    }
+
+    public void deleteFromTail() {
+        if (head == null) return;
+        Node temp = head;
+        while (temp.right != null) {
+            temp = temp.right;
+        }
+        Node beforeLast = temp.left;
+        beforeLast.right = null;
+        temp.left = null;
+        temp = null;
+    }
+
+    public void deleteFromPosition(int position) {
+        if(head == null) {
+            return;
+        }
+
+        if(position == 1) {
+            deleteFromHead();
+            return;
+        }
+
+        if(position == this.countElements()) {
+            deleteFromTail();
+            return;
+        }
+        Node temp = head;
+        Node prev = head;
+        int aux = 1;
+        while(temp !=null && aux < position){
+            prev = temp;
+            temp = temp.right;
+            aux++;
+        }
+
+        Node next = temp.right;
+        prev.right=next;
+        next.left=prev;
+        temp.right=null;
+        temp.left=null;
+        temp = null;
     }
 }

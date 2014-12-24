@@ -1,5 +1,6 @@
 package com.neilson.lists;
 
+import com.sun.media.sound.DLSInfo;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -42,9 +43,37 @@ public class DLListTest {
         list.insertTail(2);
         list.insertTail(3);
         list.insertTail(4);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 3, 2, 1}, list.comeAndGo());
+    }
+
+    @Test
+    public void deleteFromHead() {
+        DList list = new DList();
+        insertNElements(list, 5);
+        list.deleteFromHead();
+        assertArrayEquals(new int[]{2, 3, 4, 5, 4, 3, 2}, list.comeAndGo());
+    }
+
+    @Test
+    public void deleteFromTail(){
+        DList list = new DList();
+        insertNElements(list, 5);
+        list.deleteFromTail();
         assertArrayEquals(new int[]{1,2,3,4,3,2,1}, list.comeAndGo());
     }
 
+    @Test
+    public void deleteFromPosition(){
+        DList list = new DList();
+        insertNElements(list, 7);
+        list.deleteFromPosition(4);
+        assertArrayEquals(new int[]{1,2,3,5,6,7}, list.toArray());
+        list.deleteFromPosition(1);
+        assertArrayEquals(new int[]{2,3,5,6,7}, list.toArray());
+        list.deleteFromPosition(5);
+        assertArrayEquals(new int[]{2,3,5,6}, list.toArray());
+
+    }
     public void insertNElements(DList list, int numElements) {
         for (int i = numElements; i > 0; i--) {
             list.insertHead(i);
