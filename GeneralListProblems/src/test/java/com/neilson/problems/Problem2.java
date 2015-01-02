@@ -9,6 +9,7 @@ import org.junit.Test;
 
 /**
  * Created by neilson on 12/29/14.
+ * Find the nth node from the end with two scans
  */
 public class Problem2 {
     @Test
