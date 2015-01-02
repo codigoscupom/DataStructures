@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CLListTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2014-12-28T00:32:20" hostname="neilson.local" time="0.136">
+  <properties/>
+  <testcase name="insertNodeHead" classname="CLListTest" time="0.012"/>
+  <testcase name="insertNodeTail" classname="CLListTest" time="0.063"/>
+  <testcase name="count" classname="CLListTest" time="0.037"/>
+  <testcase name="deleteFromHead" classname="CLListTest" time="0.001"/>
+  <testcase name="deleteFromTail" classname="CLListTest" time="0.003"/>
+  <system-out><![CDATA[0
+1
+2
+3
+4
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
