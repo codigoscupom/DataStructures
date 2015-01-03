@@ -1,7 +1,6 @@
 package com.neilson.problems;
 
 import com.neilson.commons.singlelinkedlist.List;
-import com.neilson.commons.singlelinkedlist.Node;
 import com.neilson.commons.utils.ListUtils;
 import org.junit.Test;
 
@@ -12,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by neilson on 1/1/15.
  * Insert a node in a sorted linked list
  */
-public class Problem15 {
+public class Problem15And16 {
     @Test
     public void insertNodeSortedList() {
         List list = ListUtils.createList(3);
@@ -37,18 +36,12 @@ public class Problem15 {
     }
 
     @Test
-    public void invertRecursively() {
-        List list = ListUtils.createList(5);
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, list.toArray());
-        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, list.invertRecursively().toArray());
-    }
-
-    @Test
     public void invertRecursively2() {
-        List list = ListUtils.createList(5);
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, list.toArray());
-        Node inversedHead = list.getInversedHead(list.head);
-        System.out.println();
+        List abc = new List();
+        ListUtils.insertNElements(abc, 5);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, abc.toArray());
+        List inversedList = ListUtils.invertRecursively(abc.head);
+        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, inversedList.toArray());
 
     }
 }

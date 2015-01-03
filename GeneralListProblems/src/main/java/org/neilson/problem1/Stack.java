@@ -12,6 +12,10 @@ public class Stack {
         linkedList = new List();
     }
 
+    public Boolean isEmpty() {
+        return linkedList.head == null;
+    }
+
     public void push(Integer value) {
         this.linkedList.insertHead(value);
     }

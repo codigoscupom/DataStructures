@@ -9,14 +9,15 @@ import java.util.HashSet;
 public class List {
     public Node head;
 
-    public void insertHead(int value) {
+    public Node insertHead(int value) {
         if (this.head == null) {
             head = new Node(value);
-            return;
+            return this.head;
         }
         Node node = new Node(value);
         node.next = head;
         head = node;
+        return head;
     }
 
     public Integer removeFromHead() {
@@ -252,18 +253,39 @@ public class List {
         return this;
     }
 
-    public List invertRecursively() {
-        this.head = getInversedHead(this.head);
-        return this;
+    public Node middle() {
+        Node fast = head;
+        Node slow = head;
+        byte i = 0;
+        while (fast.next != null) {
+            if (i == 0) {
+                i = 1;
+            } else {
+                slow = slow.next;
+                i = 0;
+            }
+            fast = fast.next;
+
+        }
+        return slow;
     }
 
-    public Node getInversedHead(Node list){
-        if (list == null) return null;
-        if (list.next == null) return list;
-        Node secondElement = list.next;
-        list.next = null;
-        Node reversedList = getInversedHead(secondElement);
-        reversedList.next = list;
-        return reversedList;
+
+    public void printFromEnd(Node node) {
+        if (node == null) return;
+        printFromEnd(node.next);
+        System.out.println(node.value);
+    }
+
+    public Boolean isSizeEven() {
+        Node temp = head;
+        while (temp != null && temp.next != null) {
+            temp = temp.next.next;
+        }
+        if (temp == null) {
+            return Boolean.TRUE;
+        } else {
+            return Boolean.FALSE;
+        }
     }
 }
