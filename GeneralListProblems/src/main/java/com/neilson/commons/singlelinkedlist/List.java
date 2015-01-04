@@ -20,6 +20,16 @@ public class List {
         return head;
     }
 
+    public Node insertTail(int value) {
+        if (this.head == null) {
+            head = new Node(value);
+            return this.head;
+        }
+        Node node = new Node(value);
+        tail().next = node;
+        return head;
+    }
+
     public Integer removeFromHead() {
         if (head == null) return null;
         int value = head.value;
@@ -287,5 +297,15 @@ public class List {
         } else {
             return Boolean.FALSE;
         }
+    }
+
+    @Override
+    public String toString() {
+        int[] ints = this.toArray();
+        StringBuilder intsStr = new StringBuilder();
+        for (int i = 0; i < ints.length; i++) {
+            intsStr.append(ints[i] + " ");
+        }
+        return intsStr.toString();
     }
 }

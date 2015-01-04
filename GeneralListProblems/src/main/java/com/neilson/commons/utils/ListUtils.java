@@ -16,6 +16,15 @@ public class ListUtils {
         return list;
     }
 
+    public static List createList(Integer... elements) {
+        List list = new List();
+        for (Integer element : elements) {
+            list.insertTail(element);
+        }
+        return list;
+    }
+
+
     public static List createList(int low, int high) {
         List list = new List();
         //Random random = new Random();i = i - (random.nextInt() % 2 == 0 ? 1 : 2)
@@ -27,6 +36,7 @@ public class ListUtils {
         }
         return list;
     }
+
 
     public static List insertNElements(List list, int n) {
         for (int i = n; i > 0; i--) {
@@ -97,4 +107,33 @@ public class ListUtils {
         return reversedHead;
     }
 
+    public static List merge(List l1, List l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        List l3 = new List();
+        Node aux1 = l1.head;
+        Node aux2 = l2.head;
+
+        while (aux1 != null && aux2 != null) {
+            if (aux1.value < aux2.value) {
+                l3.insertTail(aux1.value);
+                aux1 = aux1.next;
+            } else {
+                l3.insertTail(aux2.value);
+                aux2 = aux2.next;
+            }
+        }
+
+        while (aux1 != null) {
+            l3.insertTail(aux1.value);
+            aux1 = aux1.next;
+        }
+
+        while (aux2 != null) {
+            l3.insertTail(aux2.value);
+            aux2 = aux2.next;
+        }
+
+        return l3;
+    }
 }
