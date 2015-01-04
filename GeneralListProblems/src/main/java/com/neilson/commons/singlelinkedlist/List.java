@@ -1,6 +1,8 @@
 package com.neilson.commons.singlelinkedlist;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.HashSet;
 
 /**
@@ -88,6 +90,18 @@ public class List {
         }
         return temp;
     }
+
+    public Node tail(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node temp = head;
+        while (temp.next != null && temp.next != head) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
 
     public Boolean containsLoop() {
         if (head == null) return Boolean.FALSE;
@@ -280,6 +294,23 @@ public class List {
         return slow;
     }
 
+    public Node middle(Node head, Node tail) {
+        Node fast = head;
+        Node slow = head;
+        byte i = 0;
+        while (fast.value != tail.value && fast.next != null) {
+            if (i == 0) {
+                i = 1;
+            } else {
+                slow = slow.next;
+                i = 0;
+            }
+            fast = fast.next;
+
+        }
+        return slow;
+    }
+
 
     public void printFromEnd(Node node) {
         if (node == null) return;
@@ -308,4 +339,31 @@ public class List {
         }
         return intsStr.toString();
     }
+
+    public Boolean binarySearch(Node head, Node tail, Integer value) {
+        if (head == null) return false;
+        if(head == tail) return false;
+        Node middle = middle(head, tail);
+        if (middle.value == value) {
+            return Boolean.TRUE;
+        } else if (value < middle.value) {
+            tail = middle;
+            return binarySearch(head, tail, value);
+        } else {
+            head = middle.next;
+            return binarySearch(head, tail, value);
+        }
+    }
+
+    public void invertList(Node head){
+        if(head == null || head.next==null)
+            return;
+
+    }
+    public void invert(Node head) {
+        Node nextNode = head.next;
+        head.next = nextNode.next;
+        nextNode.next = head;
+        invert(head.next);
+   }
 }
