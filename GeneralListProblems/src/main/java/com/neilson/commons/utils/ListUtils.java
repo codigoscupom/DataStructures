@@ -136,4 +136,59 @@ public class ListUtils {
 
         return l3;
     }
+
+
+
+//essa porra aqui funciona
+   /* public static Node swapPairs(Node head) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        Node previous = null;
+        Node current = head;
+        Node runner = head.next;
+        while (runner != null && runner != current) {
+            current.next = runner.next;
+            runner.next = current;
+            if (previous == null) {
+                previous = runner;
+                head = previous;
+                previous = previous.next;
+            } else {
+                previous.next = runner;
+                //previous = previous.next.next;
+                previous = current;
+            }
+            current = current.next;
+            if (current == null) break;
+           // runner = runner.next.next.next;
+            runner = current.next;
+
+        }
+        return head;
+    }*/
+
+    public static Node swapPairs(Node head) {
+        if (head == null || head.next == null) return head;
+        Node current = head;
+        Node prev = null;
+        Node next = current.next;
+        while (next != null) {
+            current.next = next.next;
+            next.next = current;
+            if (prev == null) {
+                prev = next;
+                head = prev;
+            } else {
+                prev.next = next;
+            }
+            prev = current;
+            current = current.next;
+            if (current == null) {
+                break;
+            }
+            next = current.next;
+        }
+        return head;
+    }
 }
+

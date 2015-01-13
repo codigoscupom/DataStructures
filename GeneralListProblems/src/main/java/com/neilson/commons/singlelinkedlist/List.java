@@ -1,8 +1,6 @@
 package com.neilson.commons.singlelinkedlist;
 
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.HashSet;
 
 /**
@@ -355,15 +353,7 @@ public class List {
         }
     }
 
-    public void invertList(Node head){
-        if(head == null || head.next==null)
-            return;
 
-    }
-    public void invert(Node head) {
-        Node nextNode = head.next;
-        head.next = nextNode.next;
-        nextNode.next = head;
-        invert(head.next);
-   }
+
+
 }
