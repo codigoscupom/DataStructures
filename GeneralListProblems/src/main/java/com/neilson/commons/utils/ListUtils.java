@@ -2,6 +2,7 @@ package com.neilson.commons.utils;
 
 import com.neilson.commons.singlelinkedlist.List;
 import com.neilson.commons.singlelinkedlist.Node;
+import org.neilson.problem1.Stack;
 
 /**
  * Created by neilson on 12/29/14.
@@ -138,7 +139,6 @@ public class ListUtils {
     }
 
 
-
 //essa porra aqui funciona
    /* public static Node swapPairs(Node head) {
         if (head == null) return null;
@@ -176,8 +176,7 @@ public class ListUtils {
             current.next = next.next;
             next.next = current;
             if (prev == null) {
-                prev = next;
-                head = prev;
+                head = next;
             } else {
                 prev.next = next;
             }
@@ -190,5 +189,57 @@ public class ListUtils {
         }
         return head;
     }
+
+
+    /*
+    Checking if a single linked list is palindrome using a stack
+    1) Traverse the list to find the middle and count the number of elements
+    2) As we traverse the list, we put the slow pointer (that will eventually be the middle of the list) in a stack
+    3) If the number of elements is odd, we pop from the stack, since this element would not interfere whether the list
+    is palindrome or not.
+    4) Compare each element of the second part of the list with the elements of the stack until
+    the stack is empty or we reach the end of the list.
+     */
+    public static Boolean isPalindrome(List l1) {
+        Boolean isPalindrome = Boolean.TRUE;
+        Node head = l1.head;
+        if (head == null) return Boolean.FALSE;
+        if (head.next == null) return Boolean.TRUE;
+
+        // find the middle of the list, count the elements
+        Node slow = head;
+        Node fast = head;
+        int control = 0;
+        int numElements = 0;
+        Stack stack = new Stack();
+        while (fast != null) {
+            if (control == 0) {
+                fast = fast.next;
+                control = 1;
+            } else {
+                fast = fast.next;
+                stack.push(slow.value);
+                slow = slow.next;
+                control = 0;
+            }
+            numElements++;
+        }
+        stack.push(slow.value);
+
+        Node middleNode = slow;
+        if (numElements % 2 == 1) {
+            Integer middleElement = stack.pop();
+            System.out.println(middleElement);
+        }
+        while (!stack.isEmpty() && slow.next != null) {
+            if (stack.pop() != slow.next.value) {
+                isPalindrome = Boolean.FALSE;
+            }
+            slow = slow.next;
+        }
+        return isPalindrome;
+
+    }
+
 }
 
